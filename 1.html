@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  var merge = function(nums1, m, nums2, n) {
+  let validNums1 = nums1.slice(0, m)
+  let validNums2 = nums2.slice(0, n)
+
+  const validNums = [...validNums1, ...validNums2]
+  for(let i = 0; i < m + n - 1; i++) {
+      for(let j = 0; j < m + n - i - 1; j++) {
+          if (validNums[j] > validNums[j + 1]) {
+              let temp = validNums[j]
+              validNums[j] = validNums[j + 1]
+              validNums[j + 1] = temp
+          }
+      }
+  }
+
+  nums1 = validNums
+  console.log(nums1)
+};
+
+merge([1,2,3,0,0,0], 3, [2, 5 ,6], 3)
+</script>
+</html>
